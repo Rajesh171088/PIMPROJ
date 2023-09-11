@@ -9,6 +9,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import com.viniculum.objectrepo.HomePage;
+import com.viniculum.objectrepo.LoginPage;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
@@ -60,26 +63,28 @@ public static WebDriver sdriver;
 		String USERNAME=fLib.getDataFromProperties(commonDataFilePath, "username");
 		String PASSWORD=fLib.getDataFromProperties(commonDataFilePath, "password");
 		driver.get(URL);
-//		LoginPage login=new LoginPage(driver);
-//		login.setLogin(USERNAME, PASSWORD);
+		LoginPage login=new LoginPage(driver);
+		login.setLogin(USERNAME, PASSWORD);
 		
 		System.out.println("Logged in Succesfully...!");
 	}
 	
-	@AfterMethod(groups = {"smokeTest","regressionTest"})
-	public void logout()
-	{
+//	@AfterMethod(groups = {"smokeTest","regressionTest"})
+//	public void logout() throws Throwable
+//	{
 //		HomePage homePage=new HomePage(driver);
-//		homePage.signOut(wLib, driver);
+//		//wLib.waitAndClick(homePage.getSignoutDropdown());
+//		wLib.waitForElementInDOM(driver);
+//		homePage.signOut();
 //		System.out.println("Logged Out...!");
-	}
-	
-	@AfterClass(groups = {"smokeTest","regressionTest"})
-	public void closeBrowser()
-	{
-		driver.close();
-		System.out.println("The browser is closed...!");
-	}
+//	}
+//	
+//	@AfterClass(groups = {"smokeTest","regressionTest"})
+//	public void closeBrowser()
+//	{
+//		driver.quit();
+//		System.out.println("The browser is closed...!");
+//	}
 	
 	
 }

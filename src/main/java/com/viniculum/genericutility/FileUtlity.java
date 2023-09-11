@@ -17,7 +17,7 @@ public class FileUtlity {
 	 * @throws Throwable
 	 */
 	public String getFilePathFromPropertiesFile(String key) throws Throwable {
-		FileInputStream fis = new FileInputStream("./config/filepath.properties");
+		FileInputStream fis = new FileInputStream("./config/commonfilepath.properties");
 		Properties pObj = new Properties();
 		pObj.load(fis);
 		String value = pObj.getProperty(key);

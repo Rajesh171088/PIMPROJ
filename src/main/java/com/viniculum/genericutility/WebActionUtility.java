@@ -47,7 +47,7 @@ public class WebActionUtility {
 	 */
 	public void waitForElementInDOM(WebDriver driver) throws Throwable {
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class WebActionUtility {
 	 */
 	public void waitForElement(WebDriver driver , WebElement element) throws Throwable {
 	
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
@@ -83,7 +83,7 @@ public class WebActionUtility {
 	   {
 
 		   int count = 0;
-	       while(count<TIMEOUT) {
+	       while(count<20) {
 		    	   try {
 		    	       element.click();
 		    	       break;
