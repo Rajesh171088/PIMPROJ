@@ -25,14 +25,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class WebActionUtility {
 	FileUtlity fLib = new FileUtlity();
-	int TIMEOUT;
+	
 	int PAUSE;
 	public WebActionUtility() {
 		try {
 			String filepath = fLib.getFilePathFromPropertiesFile("commonDataFilePath");
-			String SETTIMEOUT = fLib.getDataFromProperties(filepath, "timeout");
+			String SET10 = fLib.getDataFromProperties(filepath, "10");
 			String SETPAUSE = fLib.getDataFromProperties(filepath, "pause");
-			 TIMEOUT = Integer.parseInt(SETTIMEOUT);
 			 PAUSE  = Integer.parseInt(SETPAUSE);
 		} catch (Throwable e) {
 			// TODO: handle exception
@@ -58,7 +57,7 @@ public class WebActionUtility {
 	 */
 	public void waitForPage(WebDriver driver , String partailPageURL) throws Throwable {
 	
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.urlContains(partailPageURL));
 	}
 	
@@ -247,11 +246,7 @@ public class WebActionUtility {
 	public void executeJavaScript(WebDriver driver , String javaScript) {
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeAsyncScript(javaScript, null);
-	}
-
-	   
-
-	    
+	}	    
 	    /**
 	     * pass enter Key appertain in to Browser
 	     * @param driver
@@ -267,7 +262,7 @@ public class WebActionUtility {
 	   }
 	   
 	   public void waitTillUrlContains(WebDriver driver, String partialUrl) {
-		   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+		   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		   wait.until(ExpectedConditions.urlContains(partialUrl));
 	   }
 	   public void dismissAlert(WebDriver driver) {

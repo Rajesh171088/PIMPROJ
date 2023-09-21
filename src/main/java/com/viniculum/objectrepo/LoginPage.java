@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-	
+public class LoginPage {	
 	
 	@FindBy(xpath="//button[@data-action='toggle']")
 	private WebElement ShowPasswordBtn;
@@ -25,7 +24,7 @@ public class LoginPage {
 	@FindBy(name="password")
 	private WebElement passwordEdttxt;
 	
-	@FindBy(xpath="//button[@name='action']")
+	@FindBy(xpath="//*[text()='Continue']")
 	private WebElement continueBtn;
 	
 	@FindBy(xpath="//button[@name='action' and @data-action-button-primary='true']")

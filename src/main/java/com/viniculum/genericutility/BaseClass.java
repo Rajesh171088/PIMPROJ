@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 
 import com.viniculum.objectrepo.HomePage;
 import com.viniculum.objectrepo.LoginPage;
+import com.viniculum.objectrepo.ProductGovernancePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -65,26 +66,25 @@ public static WebDriver sdriver;
 		driver.get(URL);
 		LoginPage login=new LoginPage(driver);
 		login.setLogin(USERNAME, PASSWORD);
-		
+		wLib.waitForElementInDOM(driver);
 		System.out.println("Logged in Succesfully...!");
 	}
 	
-//	@AfterMethod(groups = {"smokeTest","regressionTest"})
-//	public void logout() throws Throwable
-//	{
-//		HomePage homePage=new HomePage(driver);
-//		//wLib.waitAndClick(homePage.getSignoutDropdown());
-//		wLib.waitForElementInDOM(driver);
-//		homePage.signOut();
-//		System.out.println("Logged Out...!");
-//	}
-//	
-//	@AfterClass(groups = {"smokeTest","regressionTest"})
-//	public void closeBrowser()
-//	{
-//		driver.quit();
-//		System.out.println("The browser is closed...!");
-//	}
+	@AfterMethod(groups = {"smokeTest","regressionTest"})
+	public void logout() throws Throwable
+	{
+		HomePage homePage=new HomePage(driver);
+		ProductGovernancePage governancepage=new ProductGovernancePage(driver);
+		homePage.signOut(wLib,driver);
+		System.out.println("Logged Out...!");
+	}
+	
+	@AfterClass(groups = {"smokeTest","regressionTest"})
+	public void closeBrowser()
+	{
+		driver.quit();
+		System.out.println("The browser is closed...!");
+	}
 	
 	
 }

@@ -1,4 +1,4 @@
-package com.viniculum.businessrole;
+package com.viniculum;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

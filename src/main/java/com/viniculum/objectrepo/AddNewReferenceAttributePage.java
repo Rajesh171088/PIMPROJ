@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.viniculum.genericutility.WebActionUtility;
+
 public class AddNewReferenceAttributePage {
 	
 	@FindBy(xpath="//select[@id='masterEntityName']")
@@ -83,6 +85,18 @@ public class AddNewReferenceAttributePage {
 
 	public WebElement getAddMoreAttLink() {
 		return addMoreAttLink;
+	}
+	
+	public void createNewRefAttribute(WebDriver driver, WebActionUtility wLib,String text,String attrName,String displayName, String attrLength,String attrType) throws Throwable
+	{
+		wLib.waitForElement(driver,getRefMasterDrpDown());
+		wLib.select(getRefMasterDrpDown(), text);
+		getAttributeNameEdttxt().sendKeys(attrName);
+		getDisplayNameEdtTxt().sendKeys(displayName);
+		getAttributelengthEdtTxt().sendKeys(attrLength);
+		wLib.select(getTypeDropDown(), attrType);
+		getEditablilityCheckBox().click();
+		getAddBtn().click();
 	}
 	
 }

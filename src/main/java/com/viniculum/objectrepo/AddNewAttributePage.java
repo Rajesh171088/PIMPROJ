@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.viniculum.genericutility.WebActionUtility;
+
 public class AddNewAttributePage {
 	
 	@FindBy(xpath="//input[@id='category_name']")
@@ -52,15 +54,55 @@ public class AddNewAttributePage {
 	@FindBy(xpath="//span[text()='Add']")
 	private WebElement addBtn;
 	
+	@FindBy(xpath="//b[text()='Cargo']")
+	private WebElement cargoCategorySelect;
+	
+	@FindBy(xpath="//*[text()='Add More Attribute']")
+	private WebElement addMoreAttributeLink;
+	
+	@FindBy(xpath="//*[text()='Add Attribute']")
+	private WebElement addAttributeheader;
+	
+	@FindBy(xpath="(//*[text()='Add New Attribute']/following::span[text()='×'])[position()=last()]")
+	private WebElement closeBtn;
+	
+	@FindBy(xpath="//*[text()='Attribute name can not be blank']")
+	private WebElement attrNameErrorMsg;
+	
 	//Initialization
 	
 	public AddNewAttributePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
+	
+
+	public WebElement getAttrNameErrorMsg() {
+		return attrNameErrorMsg;
+	}
+
+
+	public WebElement getCloseBtn() {
+		return closeBtn;
+	}
+
+
+	public WebElement getAddMoreAttributeLink() {
+		return addMoreAttributeLink;
+	}
+	
+
+	public WebElement getAddAttributeheader() {
+		return addAttributeheader;
+	}
+
 
 	public WebElement getCategoryEdtTxt() {
 		return categoryEdtTxt;
+	}	
+
+	public WebElement getCargoCategorySelect() {
+		return cargoCategorySelect;
 	}
 
 	public WebElement getAttributeGrpnameDropDown() {
@@ -117,6 +159,36 @@ public class AddNewAttributePage {
 
 	public WebElement getAddBtn() {
 		return addBtn;
+	}
+	
+	public void createNewAttribute(WebActionUtility wLib,String subCategory,String text,String attrName,String displayName,String attrLength,String fieldtype,String datatype) throws Throwable
+	{
+		wLib.waitAndType(getCategoryEdtTxt(), subCategory);
+		getCargoCategorySelect().click();
+		wLib.select(getAttributeGrpnameDropDown(), text);
+		getAttributeNameEdtTxt().sendKeys(attrName);
+		getAtributeDisplayNameEdtTxt().sendKeys(displayName);
+		getAttributeLengthEdttxt().sendKeys(attrLength);
+		getUniquekeyradioBtn().click();
+		wLib.select(getFieldTypeDropDown(), fieldtype);
+		wLib.select(getDataTypeDropDown(), datatype);
+		getEditablilityCheckBox().click();
+		getAddBtn().click();
+	}
+	
+	public void createExtraAttribute(WebActionUtility wLib,String subCategory,String text,String attrName,String displayName,String attrLength,String fieldtype,String datatype) throws Throwable
+	{
+		wLib.waitAndType(getCategoryEdtTxt(), subCategory);
+		getCargoCategorySelect().click();
+		wLib.select(getAttributeGrpnameDropDown(), text);
+		getAttributeNameEdtTxt().sendKeys(attrName);
+		getAtributeDisplayNameEdtTxt().sendKeys(displayName);
+		getAttributeLengthEdttxt().sendKeys(attrLength);
+		getUniquekeyradioBtn().click();
+		wLib.select(getFieldTypeDropDown(), fieldtype);
+		wLib.select(getDataTypeDropDown(), datatype);
+		getEditablilityCheckBox().click();
+		getAddMoreAttributeLink().click();
 	}
 	
 }

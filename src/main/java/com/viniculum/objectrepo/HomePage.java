@@ -14,52 +14,52 @@ public class HomePage {
 	@FindBy(xpath="//a[@class='dropdown-item secondary-font' and contains(text(),'Logout')]")
 	private WebElement logoutLink;
 	
-	@FindBy(xpath="//span[@class='akc-menu-text bold-text']")
+	@FindBy(xpath="//*[text()='Dashboard']")
 	private WebElement dashBoardBtn;
 	
-	@FindBy(xpath="//span[@class='akc-menu-text bold-text']")
+	@FindBy(xpath="//*[text()='Master']")
 	private WebElement masterBtn;
 	
 	@FindBy(xpath="//a[normalize-space()='Product Master']")
 	private WebElement productMasterLnk;
 	
-	@FindBy(xpath="//a[text()='Reference Master']")
+	@FindBy(xpath="//*[text()='Reference Master']")
 	private WebElement referenceMasterLnk;
 	
-	@FindBy(xpath="//span[text()='Product']")
+	@FindBy(xpath="//*[text()='Product']")
 	private WebElement productBtn;
 	
-	@FindBy(xpath="//a[text()='Governance']")
+	@FindBy(xpath="//*[text()='Governance']")
 	private WebElement governaceLink;
 	
-	@FindBy(xpath="//a[text()='Product List']")
+	@FindBy(xpath="//*[text()='Product List']")
 	private WebElement productListLink;
 	
-	@FindBy(xpath="//a[text()='Image Repository']")
+	@FindBy(xpath="//*[text()='Image Repository']")
 	private WebElement imgRepoLink;
 	
-	@FindBy(xpath="//a[text()='SKU Management']")
+	@FindBy(xpath="//*[text()='SKU Management']")
 	private WebElement skuMgmtLink;
 	
-	@FindBy(xpath="//span[text()='Attribute']")
+	@FindBy(xpath="//*[text()='Attribute']")
 	private WebElement attributeBtn;
 	
-	@FindBy(xpath="//a[text()='Product Attribute']")
+	@FindBy(xpath="//*[text()='Product Attribute']")
 	private WebElement prodAttributeLink;
 	
-	@FindBy(xpath="//a[text()='Reference Attribute']")
+	@FindBy(xpath="//*[text()='Reference Attribute']")
 	private WebElement refAttributeLink;
 	
-	@FindBy(xpath="//a[text()='Category Master And Mapping']")
+	@FindBy(xpath="//*[text()='Category Master And Mapping']")
 	private WebElement categoryMasterLink;
 	
-	@FindBy(xpath="//span[text()='Workflow']")
+	@FindBy(xpath="//*[text()='Workflow']")
 	private WebElement workflowBtn;
 	
-	@FindBy(xpath="//span[@class='small-text']")
+	@FindBy(xpath="//*[text()='Copyright © 2025 Vinculum Solutions Pvt. Ltd. All Rights Reserved. |']")
 	private WebElement vinculumLogo;
 	
-	@FindBy(xpath="//span[text()='Business Rule']")
+	@FindBy(xpath="//*[text()='Business Rule']")
 	private WebElement businessRuleBtn;
 	
 	
@@ -144,10 +144,11 @@ public class HomePage {
 	
 	//utilization
 	
-	public void signOut()
+	public void signOut(WebActionUtility wLib,WebDriver driver) throws Throwable
 	{
-		getSignoutDropdown().click();
-		getLogoutLink().click();		
+		wLib.mouseOverOnElement(driver, signoutDropdown);
+		wLib.waitAndClick(getSignoutDropdown());
+		wLib.waitAndClick(getLogoutLink());		
 	}
 	
 	public boolean verifyLogo()
@@ -156,6 +157,24 @@ public class HomePage {
 			return true;
 		else
 			return false;
+	}
+	
+	public void governanceClick(WebActionUtility wLib) throws Throwable
+	{
+		wLib.waitAndClick(getProductBtn());
+		wLib.waitAndClick(getGovernaceLink());
+	}
+	
+	public void clickOnProductAttribute(WebActionUtility wLib) throws Throwable
+	{
+		wLib.waitAndClick(getAttributeBtn());
+		wLib.waitAndClick(getProdAttributeLink());
+	}
+	
+	public void clickOnReferenceAttribute(WebActionUtility wLib) throws Throwable
+	{
+		wLib.waitAndClick(getAttributeBtn());
+		wLib.waitAndClick(getRefAttributeLink());
 	}
 
 }
