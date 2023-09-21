@@ -3,22 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.viniculum.ProductTest">
+      <class name="com.viniculum.master.ProductMasterScript">
         <methods>
           <include name="OpenBrowser"/>
+          <include name="verifyToCreateNewCategory"/>
           <include name="closeBrowser"/>
           <include name="logout"/>
-          <include name="verifyProductisSavedinDraftTest"/>
-          <include name="VerifyReviewerIsAbleToRejectProductTest"/>
-          <include name="verifyCodeAlreadyExistedErrorTest"/>
-          <include name="verifyCreateProductTest"/>
           <include name="login"/>
-          <include name="verifyTheErrorMessageTest"/>
-          <include name="verifyUserIsAbleToUploadFileTest"/>
-          <include name="verifyUserisAbleToSearchProductTest"/>
-          <include name="verifyEditCreatedProductTest"/>
         </methods>
-      </class> <!-- com.viniculum.ProductTest -->
+      </class> <!-- com.viniculum.master.ProductMasterScript -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

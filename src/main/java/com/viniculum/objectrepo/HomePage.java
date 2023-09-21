@@ -62,7 +62,27 @@ public class HomePage {
 	@FindBy(xpath="//*[text()='Business Rule']")
 	private WebElement businessRuleBtn;
 	
+	@FindBy(xpath = "//*[text()='System Admin']")
+	private WebElement systemAdminBtn;
 	
+	@FindBy(xpath = "//*[text()='User Management']")
+	private WebElement userManagementBtn;
+	
+	@FindBy(xpath = "//*[text()='Role Management']")
+	private WebElement RoleManagementBtn;
+	
+	public WebElement getSystemAdminBtn() {
+		return systemAdminBtn;
+	}
+
+	public WebElement getUserManagementBtn() {
+		return userManagementBtn;
+	}
+
+	public WebElement getRoleManagementBtn() {
+		return RoleManagementBtn;
+	}
+
 	public WebElement getBusinessRuleBtn() {
 		return businessRuleBtn;
 	}
